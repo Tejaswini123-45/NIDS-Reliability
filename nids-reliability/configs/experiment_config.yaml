@@ -1,0 +1,9 @@
+# Reference configuration extracted from the final notebook.
+# The notebook remains the source of truth for executable settings.
+seed_set: [42, 52, 62, 72, 82]
+models: [LogisticRegression, RandomForest, XGBoost]
+tasks: [binary, multiclass]
+missingness_rates: [0.10, 0.20]
+temporal_provenance: validated_row_timestamp_or_capture_day
+paper_mode: false
+quick_validation: true
