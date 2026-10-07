@@ -1,23 +1,22 @@
-# Agent Instructions — NIDS Reliability
+# AGENTS.md
 
-## Project source of truth
-The original notebook `notebooks/original_v6_FIXED.ipynb` is the source of truth. The files under `src/` are an ordered extraction and execution order matters.
+## Project goal
+Maintain and extend a reproducible research framework for evaluating ML-based Network Intrusion Detection Systems under temporal and controlled feature-missingness conditions.
 
-## Research constraints
-- Do not fabricate, infer, or hard-code experimental results.
-- Do not invent or substitute timestamps.
-- Preserve leakage-safe preprocessing: learned preprocessing must be fit on training data only.
-- Keep binary and multiclass experiments separate.
-- Preserve the defined reliability conditions and their semantics.
-- Paper-mode requires all five seeds: 42, 52, 62, 72, 82.
-- Do not add new research factors, datasets, models, or claims unless explicitly requested.
-- Do not call temporal evaluation concept drift unless the experiment actually supports that claim.
-- Treat the notebook and its validated configuration as authoritative when resolving implementation ambiguity.
+## Non-negotiable rules
+1. Do not fabricate, estimate, or manually invent experimental results.
+2. Do not replace the temporal provenance policy with a flow-duration or other feature-derived fake timestamp.
+3. Preserve leakage-safe preprocessing: learned transformations are fitted on training data only.
+4. Keep binary and multiclass experiments separate.
+5. Keep LR, RF, and XGBoost as the current model set unless the user explicitly expands scope.
+6. Preserve the defined missingness levels and combined temporal + missingness conditions.
+7. Do not call the temporal experiment proof of concept drift.
+8. Do not claim adversarial robustness, production readiness, universal model superiority, or cross-dataset generalization from this project.
+9. Paper-mode results must come from the completed five-seed protocol.
+10. When changing experiment logic, update the exported configuration/metadata and README if the protocol changes.
 
-## Workflow
-1. Read `README.md` and this file before changing code.
-2. Inspect the source notebook before changing scientific behavior.
-3. Make the smallest change that solves the requested task.
-4. Run validation before declaring an experiment complete.
-5. Keep generated datasets and large raw CICIDS2017 files out of Git.
-6. Never write paper claims from expected or hypothetical results.
+## Source of truth
+`notebooks/original_v6_FIXED.ipynb` is the original source. The `src/` files are an ordered extraction of its code cells. Preserve execution order unless deliberately refactoring the shared-state design and validating that outputs remain identical.
+
+## Current priority
+Finish and validate the promised core experiments first. Do not add unrelated models, datasets, SHAP, transformers, or new stress mechanisms unless explicitly requested.
