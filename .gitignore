@@ -1,0 +1,17 @@
+# Data
+*.csv
+*.parquet
+*.feather
+data/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# Generated outputs
+results/raw/
+results/tables/
+results/figures/
